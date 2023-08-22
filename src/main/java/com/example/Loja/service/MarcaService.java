@@ -9,4 +9,6 @@ public interface MarcaService {
     Marca findById(long id);
 
     Marca save(Marca marca);
+    
+    Marca deleteById(long id);
 }

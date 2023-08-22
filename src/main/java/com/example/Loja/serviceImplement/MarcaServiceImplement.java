@@ -25,4 +25,8 @@ public class MarcaServiceImplement implements MarcaService {
 	public Marca save(Marca marca) {
 		return marcaRepository.save(marca);
 	}
+
+	public Marca deleteById(long id) {
+		return deleteById(id);
+	}
 }

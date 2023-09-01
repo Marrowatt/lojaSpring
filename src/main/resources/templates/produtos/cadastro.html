@@ -32,7 +32,7 @@
 					
 					<div class="form-group col-4">
 						<label for="tags"> Tags: </label>
-						<select name="tags" id="tags" class="form-control">
+						<select name="tags" id="tags" class="form-control" multiple>
 							<option th:each="t : ${tag}" th:value="${t.id}" th:text="${t.name}"></option>
 						</select>
 					</div>

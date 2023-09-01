@@ -54,7 +54,12 @@
     <script src="/js/sb-admin-2.min.js"></script>
     
 	<script>
+
 		$( document ).ready(function() {
+			if ($('#pc-pronto').is(':checked')) {
+				 $('#pecas').addClass("d-none");
+			}
+			
 			$('#pc-pronto').click(function() {
 				 $('#pecas').addClass("d-none");
 		  	});

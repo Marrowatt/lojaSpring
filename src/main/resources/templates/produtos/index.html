@@ -23,9 +23,12 @@
 					<th th:text="${prod.id}"></th>
 					<td th:if="${prod.pc_pronto}"><a th:href="@{/produto/{id}(id=${prod.id})}" th:text="${prod.pc_pronto.name}"></a></td>
 					<td th:unless="${prod.pc_pronto}"><a th:href="@{/produto/{id}(id=${prod.id})}" th:text="${prod.peca.name}"></a></td>
-					<td th:text="${prod.cost_price}"></td>
-					<td th:text="${prod.created_at}"></td>
+					<!-- <td th:text="${prod.cost_price}"></td> -->
+					<td th:text="'R$ ' + ${#numbers.formatDecimal(prod.cost_price, 0, 'POINT', 2, 'COMMA')}"></td>
+					<!-- <td th:text="${prod.created_at}"></td> -->
+					<td th:text="${#temporals.format(prod.created_at, 'dd/MM/yyyy HH:mm')}"></td>
 					<td>
+					    <a th:href="@{/produto/editar/{id}(id=${prod.id})}" class="btn btn-warning"> <i class="fa fa-edit"></i> </a>
 					    <a th:href="@{/produto/delete/{id}(id=${prod.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
 					</td>
 				</tr>

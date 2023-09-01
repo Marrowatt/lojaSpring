@@ -122,7 +122,7 @@ public class Produto {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
-
+	
 	public LocalDateTime getCreated_at() {
 		return created_at;
 	}

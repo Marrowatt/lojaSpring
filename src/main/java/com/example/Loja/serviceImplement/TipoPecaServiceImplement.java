@@ -23,4 +23,8 @@ public class TipoPecaServiceImplement implements TipoPecaService {
 	public TipoPeca save(TipoPeca tipo_peca) {
 		return tipoPecaRepository.save(tipo_peca);
 	}
+
+	public TipoPeca deleteById(long id) {
+		return deleteById(id);
+	}
 }

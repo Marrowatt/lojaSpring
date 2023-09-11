@@ -6,6 +6,6 @@ import com.example.Loja.model.Marca;
 
 public interface MarcaRepository extends JpaRepository<Marca, Long>{
 
-	
+	Marca findByName(String marca);
 	
 }

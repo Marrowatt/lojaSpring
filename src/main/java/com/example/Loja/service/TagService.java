@@ -11,4 +11,6 @@ public interface TagService {
     Tag findById(long id);
 
     Tag save(Tag tag);
+    
+    Tag deleteById(long id);
 }

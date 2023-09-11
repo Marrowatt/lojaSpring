@@ -21,7 +21,7 @@ import jakarta.validation.constraints.NotBlank;
 public class Peca {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank

@@ -17,8 +17,17 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name="marca")
 public class Marca {
 
+	public Marca(){}
+	
+	public Marca (String marca) {
+		super();
+		this.name = marca;
+		this.created_at = LocalDateTime.now();
+		this.updated_at = LocalDateTime.now();
+	}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank

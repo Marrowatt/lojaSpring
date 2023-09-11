@@ -23,4 +23,8 @@ public class UsuarioServiceImplement implements UsuarioService {
 	public Usuario save(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
+
+	public Usuario deleteById(long id) {
+		return deleteById(id);
+	}
 }

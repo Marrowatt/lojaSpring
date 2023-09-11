@@ -11,4 +11,6 @@ public interface UsuarioService {
     Usuario findById(long id);
 
     Usuario save(Usuario usuario);
+
+    Usuario deleteById(long id);
 }

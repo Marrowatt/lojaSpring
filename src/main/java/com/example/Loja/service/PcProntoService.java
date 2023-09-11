@@ -11,4 +11,6 @@ public interface PcProntoService {
     PcPronto findById(long id);
 
     PcPronto save(PcPronto pc_pronto);
+
+    PcPronto deleteById(long id);
 }

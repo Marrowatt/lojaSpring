@@ -11,4 +11,6 @@ public interface TipoPecaService {
     TipoPeca findById(long id);
 
     TipoPeca save(TipoPeca tipo_peca);
+    
+    TipoPeca deleteById(long id);
 }

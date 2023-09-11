@@ -23,5 +23,9 @@ public class PcProntoServiceImplement implements PcProntoService {
 	public PcPronto save(PcPronto pc_pronto) {
 		return pcProntoRepository.save(pc_pronto);
 	}
+
+	public PcPronto deleteById(long id) {
+		return deleteById(id);
+	}
 	
 }

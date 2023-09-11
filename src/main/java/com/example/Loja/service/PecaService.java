@@ -11,4 +11,6 @@ public interface PecaService {
     Peca findById(long id);
 
     Peca save(Peca peca);
+
+    Peca deleteById(long id);
 }

@@ -26,12 +26,11 @@ import jakarta.validation.Valid;
 public class MarcaController {
 
 	@Autowired
-	MarcaRepository marcaRepository;
+	MarcaRepository mRepo;
 	
 	@GetMapping
 	public String getMarca(Model mav) {
-//		ModelAndView mav = new ModelAndView("marcas/index");
-		List<Marca> marca = marcaRepository.findAll();
+		List<Marca> marca = mRepo.findAll();
 		mav.addAttribute("marcas", marca);
 		return "marcas/index";
 	}
@@ -39,8 +38,7 @@ public class MarcaController {
 	@GetMapping("/{id}")
 	public ModelAndView getMarcaId(@PathVariable("id") Long id) {
 		ModelAndView mav = new ModelAndView("marcas/marcaid"); 
-		Optional<Marca> uma_so = marcaRepository.findById(id);
-//		mav.addObject("marca", uma_so);
+		Optional<Marca> uma_so = mRepo.findById(id);
 		mav.addObject("nome", uma_so.get().getName());
 		return mav;
 	}
@@ -56,7 +54,7 @@ public class MarcaController {
 		marca.setCreated_at(LocalDateTime.now());
 		marca.setUpdated_at(LocalDateTime.now());
 		
-		marcaRepository.save(marca);
+		mRepo.save(marca);
 		
 		return "redirect:/marca";
 	}
@@ -69,12 +67,12 @@ public class MarcaController {
 			return "redirect:/marca/" + marca.getId();
 		}
 		
-		Marca marcaBASE = marcaRepository.findById(marca.getId()).orElse(null);
+		Marca marcaBASE = mRepo.findById(marca.getId()).orElse(null);
 		
 		marcaBASE.setName(marca.getName());
 		marcaBASE.setUpdated_at(LocalDateTime.now());
 		
-		marcaRepository.save(marcaBASE);
+		mRepo.save(marcaBASE);
 		
 		attr.addFlashAttribute("success", "Atualizado com sucesso!");
 		
@@ -83,7 +81,7 @@ public class MarcaController {
 
 	@GetMapping("/delete/{id}") // DELETE
 	public String deleteMarca(@PathVariable("id") Long id, RedirectAttributes attr) {
-		marcaRepository.deleteById(id);
+		mRepo.deleteById(id);
 		attr.addFlashAttribute("success", "Deletado com sucesso!");
 		return "redirect:/marca";
 	}

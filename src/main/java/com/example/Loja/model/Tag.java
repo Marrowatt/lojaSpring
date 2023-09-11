@@ -17,8 +17,17 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name="tag")
 public class Tag {
 
+	public Tag(){}
+	
+	public Tag (String tag) {
+		super();
+		this.name = tag;
+		this.created_at = LocalDateTime.now();
+		this.updated_at = LocalDateTime.now();
+	}
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank

@@ -23,4 +23,8 @@ public class TagServiceImplement implements TagService {
 	public Tag save(Tag tag) {
 		return tagRepository.save(tag);
 	}
+
+	public Tag deleteById(long id) {
+		return deleteById(id);
+	}
 }

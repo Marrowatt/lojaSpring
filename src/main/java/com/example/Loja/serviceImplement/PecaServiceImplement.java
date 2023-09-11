@@ -23,4 +23,8 @@ public class PecaServiceImplement implements PecaService {
 	public Peca save(Peca peca) {
 		return pecaRepository.save(peca);
 	}
+
+	public Peca deleteById(long id) {
+		return deleteById(id);
+	}
 }

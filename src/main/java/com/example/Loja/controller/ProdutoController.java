@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -83,7 +85,11 @@ public class ProdutoController {
 	@PostMapping
 	public String postProduto(String is_pc_pronto, Produto produto, PcPronto pc_pronto, 
 			 Peca peca, BindingResult result, RedirectAttributes attr) {
-	
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		Usuario user = user_rep.findByLogin(authentication.getName());
+		
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
 			attr.addFlashAttribute("error", "Algum campo deve ser obrigatório!");
@@ -103,8 +109,6 @@ public class ProdutoController {
 			produto.setPeca(pec_rep.save(peca));
 			produto.setIsPcPronto(false);
 		}
-		
-		Usuario user = user_rep.findById((long) 1).get();
 		
 		produto.setCreated_at(LocalDateTime.now());
 		produto.setUpdated_at(LocalDateTime.now());

@@ -11,7 +11,7 @@ import com.example.Loja.repository.TagRepository;
 
 @Component
 public class Semeadora implements CommandLineRunner {
-
+	
 	@Autowired
 	MarcaRepository mRepo;
 	

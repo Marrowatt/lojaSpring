@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Usuario {
 	private String name;
 	
 	@NotBlank
+	@Column(unique=true)
 	private String login;
 	
 	@NotBlank
@@ -32,6 +34,8 @@ public class Usuario {
 	
 	@OneToMany(mappedBy="usuario")
     private Set<Produto> produto;
+
+	private String role;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-DD HH:mm:ss")
 	private LocalDateTime created_at;
@@ -94,6 +98,13 @@ public class Usuario {
 	public void setUpdated_at(LocalDateTime updated_at) {
 		this.updated_at = updated_at;
 	}
-	
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 }

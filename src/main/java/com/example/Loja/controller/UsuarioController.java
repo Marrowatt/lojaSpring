@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,10 +51,15 @@ public class UsuarioController {
 	public String postUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
+			System.out.println(result.getAllErrors());
 			attr.addFlashAttribute("error", "Algum campo deve ser obrigatório!");
 			return "redirect:/usuario/cadastro";
 		}
 		
+		BCryptPasswordEncoder cript = new BCryptPasswordEncoder();
+		
+		usuario.setPassword(cript.encode(usuario.getPassword()));
+		usuario.setRole("vendedor");
 		usuario.setCreated_at(LocalDateTime.now());
 		usuario.setUpdated_at(LocalDateTime.now());
 		
@@ -75,7 +81,8 @@ public class UsuarioController {
 		usuarioBASE.setName(usuario.getName());
 		usuarioBASE.setLogin(usuario.getLogin());
 		if(password != null) {
-			usuarioBASE.setPassword(password);
+			BCryptPasswordEncoder cript = new BCryptPasswordEncoder();
+			usuario.setPassword(cript.encode(password));
 		} else {
 			usuarioBASE.setPassword(usuarioBASE.getPassword()); // gambiarra
 		}

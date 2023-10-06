@@ -1,0 +1,36 @@
+<div th:replace="comum/head"></div>
+
+<div class="container-fluid">
+	<div class="row">
+		<h3 class="text-warning col-10 mb-2"> Todos os usuários do sistema </h3>
+		
+		<th:block th:include="validador"></th:block>
+		
+		<a href="/usuario/cadastro" class="btn btn-primary col-1 ml-2 mb-2"><i class="fa fa-plus"></i></a>
+			
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th> Id: </th>
+					<th> Nome: </th>
+					<th> Data criação: </th>
+					<th> Data atualização: </th>
+					<th> Ações: </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u : ${usuarios}">
+					<th th:text="${u.id}"></th>
+					<td> <a th:href="@{/usuario/{id}(id=${u.id})}" th:text="${u.name}"></a> </td>
+					<td th:text="${u.created_at}"></td>
+					<td th:text="${u.updated_at}"></td>
+					<td>
+					    <a th:href="@{/usuario/delete/{id}(id=${u.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div th:replace="comum/foot"></div>

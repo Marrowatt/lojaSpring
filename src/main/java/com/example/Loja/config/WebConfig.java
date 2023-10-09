@@ -20,6 +20,9 @@ public class WebConfig {
 	@Autowired
 	private UserDetailsService uds;
 	
+//	@Autowired
+//	private LoginSuccessHandler successHandler;
+	
 	@Bean
 	AuthenticationProvider authenticationProvider () {
 		DaoAuthenticationProvider prov = new DaoAuthenticationProvider();
@@ -37,12 +40,12 @@ public class WebConfig {
 		return http.authorizeHttpRequests(
 				authConf -> {
 					authConf.requestMatchers("/login").permitAll();
+					authConf.requestMatchers("/").permitAll();
         			authConf.requestMatchers("/produto").hasAuthority("admin");
-//        			authConf.requestMatchers("/marca").hasAuthority("vendedor");
-//        			authConf.requestMatchers("/tipopeca").hasAuthority("admin");
         			authConf.anyRequest().authenticated();
         		})
-				.formLogin(Customizer.withDefaults())
+				.formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/marca"))
+				.logout(logout -> logout.logoutSuccessUrl("/"))
 				.build();
 	}
 

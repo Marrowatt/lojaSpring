@@ -20,8 +20,8 @@
 				<tr th:each="tp : ${tipopecas}">
 					<th th:text="${tp.id}"></th>
 					<td> <a th:href="@{/tipopeca/{id}(id=${tp.id})}" th:text="${tp.name}"></a> </td>
-					<td th:text="${tp.created_at}"></td>
-					<td th:text="${tp.updated_at}"></td>
+					<td th:text="${#temporals.format(tp.created_at, 'dd/MM/yyyy HH:mm')}"></td>
+					<td th:text="${#temporals.format(tp.updated_at, 'dd/MM/yyyy HH:mm')}"></td>
 					<td>
 					    <a th:href="@{/tipopeca/delete/{id}(id=${tp.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
 					</td>

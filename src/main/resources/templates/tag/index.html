@@ -19,9 +19,9 @@
 			<tbody>
 				<tr th:each="t : ${tags}">
 					<th th:text="${t.id}"></th>
-					<td> <a th:href="@{/tag/{id}(id=${t.id})}" th:text="${t.name}"></a> </td>
-					<td th:text="${t.created_at}"></td>
-					<td th:text="${t.updated_at}"></td>
+					<td><a th:href="@{/tag/{id}(id=${t.id})}" th:text="${t.name}"></a></td>
+					<td th:text="${#temporals.format(t.created_at, 'dd/MM/yyyy HH:mm')}"></td>
+					<td th:text="${#temporals.format(t.updated_at, 'dd/MM/yyyy HH:mm')}"></td>
 					<td>
 					    <a th:href="@{/tag/delete/{id}(id=${t.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
 					</td>

@@ -80,12 +80,12 @@ public class UsuarioController {
 		
 		usuarioBASE.setName(usuario.getName());
 		usuarioBASE.setLogin(usuario.getLogin());
-		if(password != null) {
+		
+		if (!password.equals("")) {
 			BCryptPasswordEncoder cript = new BCryptPasswordEncoder();
-			usuario.setPassword(cript.encode(password));
-		} else {
-			usuarioBASE.setPassword(usuarioBASE.getPassword()); // gambiarra
+			usuarioBASE.setPassword(cript.encode(password));
 		}
+		
 		usuarioBASE.setUpdated_at(LocalDateTime.now());
 		
 		uRepo.save(usuarioBASE);

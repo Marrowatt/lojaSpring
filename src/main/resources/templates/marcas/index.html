@@ -20,8 +20,8 @@
 				<tr th:each="marca : ${marcas}">
 					<th th:text="${marca.id}"></th>
 					<td> <a th:href="@{/marca/{id}(id=${marca.id})}" th:text="${marca.name}"></a> </td>
-					<td th:text="${marca.created_at}"></td>
-					<td th:text="${marca.updated_at}"></td>
+					<td th:text="${#temporals.format(marca.created_at, 'dd/MM/yyyy HH:mm')}"></td>
+					<td th:text="${#temporals.format(marca.updated_at, 'dd/MM/yyyy HH:mm')}"></td>
 					<td>
 					    <a th:href="@{/marca/delete/{id}(id=${marca.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
 					</td>

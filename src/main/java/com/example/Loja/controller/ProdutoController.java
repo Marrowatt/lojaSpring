@@ -206,6 +206,7 @@ public class ProdutoController {
 		prodBASE.setUpdated_at(LocalDateTime.now());
 		prodBASE.setCost_price(produto.getCost_price());
 		prodBASE.setMarca(produto.getMarca());
+		prodBASE.setTags(produto.getTags());
 		
 		rep.save(prodBASE);
 		

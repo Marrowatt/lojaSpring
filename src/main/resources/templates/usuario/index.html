@@ -22,8 +22,8 @@
 				<tr th:each="u : ${usuarios}">
 					<th th:text="${u.id}"></th>
 					<td> <a th:href="@{/usuario/{id}(id=${u.id})}" th:text="${u.name}"></a> </td>
-					<td th:text="${u.created_at}"></td>
-					<td th:text="${u.updated_at}"></td>
+					<td th:text="${#temporals.format(u.created_at, 'dd/MM/yyyy HH:mm')}"></td>
+					<td th:text="${#temporals.format(u.updated_at, 'dd/MM/yyyy HH:mm')}"></td>
 					<td>
 					    <a th:href="@{/usuario/delete/{id}(id=${u.id})}" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
 					</td>
